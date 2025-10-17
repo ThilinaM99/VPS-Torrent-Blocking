@@ -1,107 +1,119 @@
-🛡️ Advanced Torrent Blocker v3.0 for VPS
+# 🛡️ Advanced Torrent Blocker v3.0 for VPS
+A **production-grade firewall automation script** that detects and blocks torrent traffic on Linux VPS servers.  
+Built for **sysadmins, hosting providers, and panel operators** (Xray, 3x-ui, Nginx, etc.), it combines **performance**, **automation**, and **real-time monitoring** — all in one lightweight shell script.
 
-A production-grade firewall automation script that detects and blocks torrent traffic on Linux VPS servers.
-Built for sysadmins, hosting providers, and panel operators (Xray, 3x-ui, Nginx, etc.), it combines performance, automation, and real-time monitoring — all in one powerful shell script.
+---
 
-🚀 Features
+## 🚀 Features
 
-✅ Multi-layer Protection
+### ✅ Multi-layer Protection
+- Blocks **torrent trackers**, **torrent websites**, and **P2P ports (6881–6900, 51413)**
+- DNS blocking via `/etc/hosts`
+- Deep Packet Inspection (DPI) for BitTorrent protocol signatures
 
-Blocks torrent trackers, torrent websites, and P2P ports (6881–6900, 51413)
+### ✅ Performance Optimized
+- Uses `ipset` + `conntrack` for lightning-fast lookups  
+- Kernel tuning for high-traffic environments  
+- Minimal CPU load (<2%) even on small VPS setups
 
-DNS blocking via /etc/hosts
+### ✅ Automation
+- Daily **auto-update** of tracker IPs (via cron)
+- Persistent across reboots (`netfilter-persistent` + systemd)
+- Built-in **backup** and one-command **uninstall**
 
-Deep Packet Inspection (DPI) for BitTorrent protocol signatures
+### ✅ Monitoring & Logging
+- Real-time system metrics (CPU, memory, conntrack usage)
+- Logs all updates to `/var/log/torrent-blocker.log`
+- `torrent-blocker status` shows live blocking stats
 
-✅ Performance Optimized
+### ✅ Webhook Alerts
+- Optional **Discord / Telegram / Slack** integration  
+- Sends alerts when large updates occur (customizable threshold)
 
-Uses ipset + conntrack for lightning-fast lookups
+### ✅ Duplicate Protection
+- Prevents redundant entries in `/etc/hosts`
+- Clean and centralized configuration at `/opt/torrent-blocker/config.conf`
 
-Kernel tuning for high-traffic environments
+---
 
-Minimal CPU load (<2%) even on small VPS
+## 🧩 Supported Systems
 
-✅ Automation
+| OS | Status |
+|----|--------|
+| Ubuntu 20.04 / 22.04 / 24.04 | ✅ Tested |
+| Debian 10 / 11 / 12 | ✅ Tested |
+| AlmaLinux / Rocky / CentOS Stream 8+ | ⚙️ Minor adjustments |
+| Panels (Xray / 3x-ui / Nginx-based) | ✅ Compatible |
 
-Daily auto-update of tracker IPs (via cron)
+---
 
-Persistent across reboots (netfilter-persistent + systemd)
+## ⚙️ Installation
 
-Built-in backup and one-command uninstall
+Run as **root** or with **sudo privileges**:
 
-✅ Monitoring & Logging
-
-Real-time system metrics (CPU, memory, conntrack usage)
-
-Logs all updates to /var/log/torrent-blocker.log
-
-“torrent-blocker status” shows live stats
-
-✅ Webhook Alerts
-
-Optional Discord / Telegram / Slack integration
-
-Notifies when large updates occur (custom threshold)
-
-✅ Duplicate Protection
-
-Prevents redundant entries in /etc/hosts
-
-Clean configuration management via /opt/torrent-blocker/config.conf
-
-🧩 Supported Systems
-OS	Status
-Ubuntu 20.04 / 22.04 / 24.04	✅ Tested
-Debian 10 / 11 / 12	✅ Tested
-AlmaLinux / Rocky / CentOS Stream 8+	⚙️ Minor adjustments
-Panels (Xray / 3x-ui / Nginx-based)	✅ Compatible
-⚙️ Installation
-
-Run as root or with sudo privileges:
-
-bash <(curl -fsSL https://raw.githubusercontent.com/yourusername/torrent-blocker/main/torrent-blocker-v3.sh)
-
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/ThilinaM99/VPS-Torrent-Blocking/main/torrent-blocker-v3.sh)
+```
 
 Once installed:
 
+```bash
 source ~/.bashrc
 torrent-blocker status
+```
 
-🧠 Management Commands
-Command	Description
-torrent-blocker status	Show current blocking stats and system load
-torrent-blocker update	Manually refresh tracker IPs
-torrent-blocker webhook	Configure webhook alerts (Discord, Telegram, Slack)
-torrent-blocker uninstall	Completely remove the firewall and restore system
-📊 Logs & Metrics
+---
 
-Log file: /var/log/torrent-blocker.log
+## 🧠 Management Commands
 
-Backup directory: /root/torrent-block-backup-*
+| Command | Description |
+|----------|--------------|
+| `torrent-blocker status` | Show current blocking stats and system load |
+| `torrent-blocker update` | Manually refresh tracker IPs |
+| `torrent-blocker webhook` | Configure webhook alerts (Discord, Telegram, Slack) |
+| `torrent-blocker uninstall` | Completely remove the firewall and restore system |
 
-System load and connection stats logged automatically
+---
 
-⚠️ Notes
+## 📊 Logs & Metrics
 
-Encrypted torrent traffic (VPN or obfuscation) may bypass DPI detection.
+- **Log file:** `/var/log/torrent-blocker.log`  
+- **Backup directory:** `/root/torrent-block-backup-*`  
+- **Config file:** `/opt/torrent-blocker/config.conf`  
+- **System load and connection stats** logged automatically
 
-IPv6 blocking is optional and can be added if required.
+---
 
-If UFW is active, the script will prompt to disable or merge rules.
+## ⚠️ Notes
 
-📢 Example Webhook Output
+- Encrypted torrent traffic (VPN or obfuscated) may bypass DPI detection.  
+- IPv6 blocking is optional and can be added if required.  
+- If **UFW** is active, the script will prompt to disable or merge rules to avoid conflicts.
 
-Discord / Telegram / Slack Alert Example:
+---
 
+## 📢 Example Webhook Output
+
+**Discord / Telegram / Slack Alert Example:**
+```
 🛡️ Torrent Blocker Alert
 Added 134 new tracker IPs.
 Total blocked: 4,580 trackers, 1,102 sites.
+```
 
-❤️ Contribute
+---
 
-Pull requests, bug reports, and tracker updates are always welcome!
-If you find new torrent domains or trackers, submit them via a PR or issue.
+## ❤️ Contribute
 
-📄 License
+Pull requests, bug reports, and tracker updates are always welcome!  
+If you find new torrent domains or trackers, submit them via a **PR or issue**.
 
-MIT License — free to use, modify, and distribute.
+---
+
+## 📄 License
+**MIT License** — free to use, modify, and distribute.
+
+---
+
+> Developed with ❤️ by [ThilinaM99](https://github.com/ThilinaM99)  
+> A lightweight, secure, and automated solution to protect your VPS from torrent abuse.
