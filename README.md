@@ -52,7 +52,7 @@ Built for **sysadmins, hosting providers, and panel operators** (Xray, 3x-ui, Ng
 Run as **root** or with **sudo privileges**:
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/ThilinaM99/VPS-Torrent-Blocking/main/torrent-blocker-v3.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/ThilinaM99/VPS-Torrent-Blocking/main/torrent_block.sh)
 ```
 
 Once installed:
