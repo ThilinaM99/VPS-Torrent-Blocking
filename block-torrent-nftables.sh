@@ -10,8 +10,10 @@ echo "Blocking all torrent traffic using nftables. Please wait..."
 wget -q -O /etc/trackers https://raw.githubusercontent.com/nikzad-avasam/block-torrent-on-server/main/domains
 
 # Create nftables table and set if not already present
-nft list tables | grep -q '^table inet torrentblock$' || nft add table inet torrentblock
-nft list chains inet torrentblock | grep -q '^chain trackerblock$' || nft add chain inet torrentblock trackerblock { type filter hook output priority 0 \; }
+nft list tables | grep -q 'torrentblock' || nft add table inet torrentblock
+if ! nft list chains inet torrentblock 2>/dev/null | grep -q 'trackerblock'; then
+    nft add chain inet torrentblock trackerblock { type filter hook output priority 0 \; }
+fi
 
 # Clean old rules
 nft flush chain inet torrentblock trackerblock

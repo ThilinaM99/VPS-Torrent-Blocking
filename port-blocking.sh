@@ -45,9 +45,10 @@ if command -v nft &> /dev/null; then
     echo "Setting up nftables rules..."
     
     # Create table and chain if not exists
-    nft list tables | grep -q '^table inet torrentblock$' || nft add table inet torrentblock
-    nft list chains inet torrentblock | grep -q '^chain portblock$' || \
+    nft list tables | grep -q 'torrentblock' || nft add table inet torrentblock
+    if ! nft list chains inet torrentblock 2>/dev/null | grep -q 'portblock'; then
         nft add chain inet torrentblock portblock { type filter hook output priority 0 \; }
+    fi
     
     # Flush old rules
     nft flush chain inet torrentblock portblock

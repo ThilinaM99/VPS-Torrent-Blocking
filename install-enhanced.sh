@@ -255,10 +255,11 @@ setup_port_blocking() {
         done
         iptables-save > /etc/iptables/rules.v4 2>/dev/null || true
     elif [ "$FIREWALL" = "nftables" ]; then
-        nft list chains inet torrentblock | grep -q '^chain portblock$' || \
+        if ! nft list chains inet torrentblock 2>/dev/null | grep -q 'portblock'; then
             nft add chain inet torrentblock portblock { type filter hook input priority 0 \; }
+        fi
         
-        nft flush chain inet torrentblock portblock
+        nft flush chain inet torrentblock portblock 2>/dev/null || true
         
         for port in "${TORRENT_PORTS[@]}"; do
             nft add rule inet torrentblock portblock tcp dport "$port" drop

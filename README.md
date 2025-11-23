@@ -14,7 +14,7 @@ Copy and paste this single command:
 sudo bash -c "$(wget -qO- https://raw.githubusercontent.com/ThilinaM99/VPS-Torrent-Blocking/main/INSTALL.sh)"
 ```
 
-**That's it!** Installation will complete in 2-3 minutes.
+**That's it!** Installation will complete in ~1 minute.
 
 ---
 

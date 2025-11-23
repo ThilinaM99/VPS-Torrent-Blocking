@@ -1,4 +1,3 @@
-
 #!/bin/bash
 #
 # Credit to original author: sam https://github.com/nikzad-avasam/block-torrent-on-server
