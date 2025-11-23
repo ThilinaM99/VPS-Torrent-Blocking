@@ -11,7 +11,7 @@ By using this script, you can block all torrent and P2P traffic on your server o
 Complete installation with all improvements, monitoring, and auto-updates:
 
 ```bash
-wget https://raw.githubusercontent.com/nikzad-avasam/block-torrent-on-server/main/install-enhanced.sh && chmod +x install-enhanced.sh && sudo bash install-enhanced.sh
+wget https://raw.githubusercontent.com/ThilinaM99/VPS-Torrent-Blocking/main/install-enhanced.sh && chmod +x install-enhanced.sh && sudo bash install-enhanced.sh
 ```
 
 **Features:**
@@ -30,7 +30,7 @@ wget https://raw.githubusercontent.com/nikzad-avasam/block-torrent-on-server/mai
 Simple installation using iptables:
 
 ```bash
-wget https://raw.githubusercontent.com/nikzad-avasam/block-torrent-on-server/main/btorrent.sh && chmod +x btorrent.sh && sudo bash btorrent.sh
+wget https://raw.githubusercontent.com/ThilinaM99/VPS-Torrent-Blocking/main/btorrent.sh && chmod +x btorrent.sh && sudo bash btorrent.sh
 ```
 
 ---
@@ -39,7 +39,7 @@ wget https://raw.githubusercontent.com/nikzad-avasam/block-torrent-on-server/mai
 Simple installation using nftables (modern firewall):
 
 ```bash
-wget https://raw.githubusercontent.com/nikzad-avasam/block-torrent-on-server/main/block-torrent-nftables.sh && chmod +x block-torrent-nftables.sh && sudo bash block-torrent-nftables.sh
+wget https://raw.githubusercontent.com/ThilinaM99/VPS-Torrent-Blocking/main/block-torrent-nftables.sh && chmod +x block-torrent-nftables.sh && sudo bash block-torrent-nftables.sh
 ```
 
 ---
@@ -53,7 +53,7 @@ sudo /opt/torrent-blocking/uninstall.sh
 
 ### **Basic Installation:**
 ```bash
-wget https://raw.githubusercontent.com/nikzad-avasam/block-torrent-on-server/main/rollback-torrent-block.sh && chmod +x rollback-torrent-block.sh && sudo bash rollback-torrent-block.sh
+wget https://raw.githubusercontent.com/ThilinaM99/VPS-Torrent-Blocking/main/rollback-torrent-block.sh && chmod +x rollback-torrent-block.sh && sudo bash rollback-torrent-block.sh
 ```
 
 ---
@@ -174,8 +174,10 @@ See `IMPROVEMENTS.md` for details.
 
 This project helps protect your server from legal issues related to torrent usage.
 
+**Enhanced By:** ThilinaM99  
+**GitHub:** https://github.com/ThilinaM99/VPS-Torrent-Blocking  
 **Original Author:** [avasam](https://avasam.ir)  
-**GitHub:** https://github.com/nikzad-avasam/block-torrent-on-server
+**Original GitHub:** https://github.com/nikzad-avasam/block-torrent-on-server
 
 ---
 

@@ -9,7 +9,7 @@ Welcome! This guide will get you started in **30 seconds**.
 Copy and paste this command in your terminal:
 
 ```bash
-wget https://raw.githubusercontent.com/nikzad-avasam/block-torrent-on-server/main/install-enhanced.sh && chmod +x install-enhanced.sh && sudo bash install-enhanced.sh
+wget https://raw.githubusercontent.com/ThilinaM99/VPS-Torrent-Blocking/main/install-enhanced.sh && chmod +x install-enhanced.sh && sudo bash install-enhanced.sh
 ```
 
 That's it! The script will:
@@ -126,21 +126,21 @@ sudo nft list ruleset | grep drop
 
 ### Option 1: Enhanced (Recommended) ⭐
 ```bash
-wget https://raw.githubusercontent.com/nikzad-avasam/block-torrent-on-server/main/install-enhanced.sh && chmod +x install-enhanced.sh && sudo bash install-enhanced.sh
+wget https://raw.githubusercontent.com/ThilinaM99/VPS-Torrent-Blocking/main/install-enhanced.sh && chmod +x install-enhanced.sh && sudo bash install-enhanced.sh
 ```
 **Best for:** Production servers
 **Features:** All features included
 
 ### Option 2: Basic (iptables)
 ```bash
-wget https://raw.githubusercontent.com/nikzad-avasam/block-torrent-on-server/main/btorrent.sh && chmod +x btorrent.sh && sudo bash btorrent.sh
+wget https://raw.githubusercontent.com/ThilinaM99/VPS-Torrent-Blocking/main/btorrent.sh && chmod +x btorrent.sh && sudo bash btorrent.sh
 ```
 **Best for:** Simple setups
 **Features:** Domain blocking only
 
 ### Option 3: Basic (nftables)
 ```bash
-wget https://raw.githubusercontent.com/nikzad-avasam/block-torrent-on-server/main/block-torrent-nftables.sh && chmod +x block-torrent-nftables.sh && sudo bash block-torrent-nftables.sh
+wget https://raw.githubusercontent.com/ThilinaM99/VPS-Torrent-Blocking/main/block-torrent-nftables.sh && chmod +x block-torrent-nftables.sh && sudo bash block-torrent-nftables.sh
 ```
 **Best for:** Modern systems
 **Features:** Domain blocking only
@@ -151,7 +151,7 @@ wget https://raw.githubusercontent.com/nikzad-avasam/block-torrent-on-server/mai
 
 ### Step 1: Install (2 minutes)
 ```bash
-wget https://raw.githubusercontent.com/nikzad-avasam/block-torrent-on-server/main/install-enhanced.sh && chmod +x install-enhanced.sh && sudo bash install-enhanced.sh
+wget https://raw.githubusercontent.com/ThilinaM99/VPS-Torrent-Blocking/main/install-enhanced.sh && chmod +x install-enhanced.sh && sudo bash install-enhanced.sh
 ```
 
 ### Step 2: Verify (1 minute)
@@ -210,7 +210,7 @@ tail -f /var/log/torrent-blocking/blocked-domains.log
 
 ### Run This Now:
 ```bash
-wget https://raw.githubusercontent.com/nikzad-avasam/block-torrent-on-server/main/install-enhanced.sh && chmod +x install-enhanced.sh && sudo bash install-enhanced.sh
+wget https://raw.githubusercontent.com/ThilinaM99/VPS-Torrent-Blocking/main/install-enhanced.sh && chmod +x install-enhanced.sh && sudo bash install-enhanced.sh
 ```
 
 ### Then Verify:

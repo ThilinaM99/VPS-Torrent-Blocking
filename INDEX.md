@@ -223,21 +223,21 @@
 
 ### Method 1: Enhanced (Recommended)
 ```bash
-wget https://raw.githubusercontent.com/nikzad-avasam/block-torrent-on-server/main/install-enhanced.sh && chmod +x install-enhanced.sh && sudo bash install-enhanced.sh
+wget https://raw.githubusercontent.com/ThilinaM99/VPS-Torrent-Blocking/main/install-enhanced.sh && chmod +x install-enhanced.sh && sudo bash install-enhanced.sh
 ```
 **Best for:** Production servers, monitoring needed
 **Features:** All features included
 
 ### Method 2: Basic (iptables)
 ```bash
-wget https://raw.githubusercontent.com/nikzad-avasam/block-torrent-on-server/main/btorrent.sh && chmod +x btorrent.sh && sudo bash btorrent.sh
+wget https://raw.githubusercontent.com/ThilinaM99/VPS-Torrent-Blocking/main/btorrent.sh && chmod +x btorrent.sh && sudo bash btorrent.sh
 ```
 **Best for:** Simple setups, older systems
 **Features:** Domain blocking only
 
 ### Method 3: Basic (nftables)
 ```bash
-wget https://raw.githubusercontent.com/nikzad-avasam/block-torrent-on-server/main/block-torrent-nftables.sh && chmod +x block-torrent-nftables.sh && sudo bash block-torrent-nftables.sh
+wget https://raw.githubusercontent.com/ThilinaM99/VPS-Torrent-Blocking/main/block-torrent-nftables.sh && chmod +x block-torrent-nftables.sh && sudo bash block-torrent-nftables.sh
 ```
 **Best for:** Modern systems
 **Features:** Domain blocking only
@@ -357,7 +357,7 @@ wget https://raw.githubusercontent.com/nikzad-avasam/block-torrent-on-server/mai
 
 ## 📞 Support & Resources
 
-- **GitHub:** https://github.com/nikzad-avasam/block-torrent-on-server
+- **GitHub:** https://github.com/ThilinaM99/VPS-Torrent-Blocking
 - **Documentation:** See all .md files
 - **Quick Help:** QUICK-START.md
 - **Advanced:** IMPROVEMENTS.md
@@ -396,7 +396,7 @@ wget https://raw.githubusercontent.com/nikzad-avasam/block-torrent-on-server/mai
 
 Or run directly:
 ```bash
-wget https://raw.githubusercontent.com/nikzad-avasam/block-torrent-on-server/main/install-enhanced.sh && chmod +x install-enhanced.sh && sudo bash install-enhanced.sh
+wget https://raw.githubusercontent.com/ThilinaM99/VPS-Torrent-Blocking/main/install-enhanced.sh && chmod +x install-enhanced.sh && sudo bash install-enhanced.sh
 ```
 
 💚 Stay safe!
