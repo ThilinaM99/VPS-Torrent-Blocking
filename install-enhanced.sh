@@ -96,18 +96,20 @@ download_blocklists() {
     
     # Download domains list
     if wget -q -O "$BLOCKLIST_DIR/domains.txt" \
-        https://raw.githubusercontent.com/nikzad-avasam/block-torrent-on-server/main/domains; then
+        https://raw.githubusercontent.com/ThilinaM99/VPS-Torrent-Blocking/main/domains; then
         print_success "Downloaded domains list"
     else
-        print_warning "Failed to download domains list, using local copy if available"
+        print_error "Failed to download domains list"
+        return 1
     fi
     
     # Download hosts file
     if wget -q -O "$BLOCKLIST_DIR/hosts.txt" \
-        https://raw.githubusercontent.com/nikzad-avasam/block-torrent-on-server/main/Thosts; then
+        https://raw.githubusercontent.com/ThilinaM99/VPS-Torrent-Blocking/main/Thosts; then
         print_success "Downloaded hosts file"
     else
-        print_warning "Failed to download hosts file, using local copy if available"
+        print_error "Failed to download hosts file"
+        return 1
     fi
     
     # Use local files if available
@@ -194,10 +196,10 @@ setup_nftables_blocking() {
     fi
     
     # Create nftables table and chain
-    nft list tables | grep -q '^table inet torrentblock$' || \
+    nft list tables | grep -q 'torrentblock' || \
         nft add table inet torrentblock
     
-    nft list chains inet torrentblock | grep -q '^chain domainblock$' || \
+    nft list chains inet torrentblock 2>/dev/null | grep -q 'domainblock' || \
         nft add chain inet torrentblock domainblock { type filter hook output priority 0 \; }
     
     # Flush old rules
