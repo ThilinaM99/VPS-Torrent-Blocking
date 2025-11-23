@@ -7,6 +7,17 @@ By using this script, you can block all torrent and P2P traffic on your server o
 
 ## 🚀 Quick Installation
 
+### **⚡ Fastest Way (One Command)**
+Copy and paste this single command:
+
+```bash
+sudo bash -c "$(wget -qO- https://raw.githubusercontent.com/ThilinaM99/VPS-Torrent-Blocking/main/INSTALL.sh)"
+```
+
+**That's it!** Installation will complete in 2-3 minutes.
+
+---
+
 ### **Option 1: Enhanced Installation (Recommended)**
 Complete installation with all improvements, monitoring, and auto-updates:
 
