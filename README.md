@@ -1,119 +1,182 @@
-# 🛡️ Advanced Torrent Blocker v3.0 for VPS
-A **production-grade firewall automation script** that detects and blocks torrent traffic on Linux VPS servers.  
-Built for **sysadmins, hosting providers, and panel operators** (Xray, 3x-ui, Nginx, etc.), it combines **performance**, **automation**, and **real-time monitoring** — all in one lightweight shell script.
+# Block Torrent Traffic on Server + P2P Traffic
+![images](https://github.com/user-attachments/assets/5f953f29-de91-460f-85de-855b453fce88)
+
+By using this script, you can block all torrent and P2P traffic on your server or VPS. This will prevent your server from being blocked by the datacenter. **Using torrent is illegal in many jurisdictions.**
 
 ---
 
-## 🚀 Features
+## 🚀 Quick Installation
 
-### ✅ Multi-layer Protection
-- Blocks **torrent trackers**, **torrent websites**, and **P2P ports (6881–6900, 51413)**
-- DNS blocking via `/etc/hosts`
-- Deep Packet Inspection (DPI) for BitTorrent protocol signatures
-
-### ✅ Performance Optimized
-- Uses `ipset` + `conntrack` for lightning-fast lookups  
-- Kernel tuning for high-traffic environments  
-- Minimal CPU load (<2%) even on small VPS setups
-
-### ✅ Automation
-- Daily **auto-update** of tracker IPs (via cron)
-- Persistent across reboots (`netfilter-persistent` + systemd)
-- Built-in **backup** and one-command **uninstall**
-
-### ✅ Monitoring & Logging
-- Real-time system metrics (CPU, memory, conntrack usage)
-- Logs all updates to `/var/log/torrent-blocker.log`
-- `torrent-blocker status` shows live blocking stats
-
-### ✅ Webhook Alerts
-- Optional **Discord / Telegram / Slack** integration  
-- Sends alerts when large updates occur (customizable threshold)
-
-### ✅ Duplicate Protection
-- Prevents redundant entries in `/etc/hosts`
-- Clean and centralized configuration at `/opt/torrent-blocker/config.conf`
-
----
-
-## 🧩 Supported Systems
-
-| OS | Status |
-|----|--------|
-| Ubuntu 20.04 / 22.04 / 24.04 | ✅ Tested |
-| Debian 10 / 11 / 12 | ✅ Tested |
-| AlmaLinux / Rocky / CentOS Stream 8+ | ⚙️ Minor adjustments |
-| Panels (Xray / 3x-ui / Nginx-based) | ✅ Compatible |
-
----
-
-## ⚙️ Installation
-
-Run as **root** or with **sudo privileges**:
+### **Option 1: Enhanced Installation (Recommended)**
+Complete installation with all improvements, monitoring, and auto-updates:
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/ThilinaM99/VPS-Torrent-Blocking/main/torrent_block.sh)
+wget https://raw.githubusercontent.com/nikzad-avasam/block-torrent-on-server/main/install-enhanced.sh && chmod +x install-enhanced.sh && sudo bash install-enhanced.sh
 ```
 
-Once installed:
+**Features:**
+- ✅ Automatic firewall detection (iptables/nftables)
+- ✅ Domain-level blocking
+- ✅ Port-level blocking (BitTorrent ports)
+- ✅ Hosts file blocking
+- ✅ Monitoring & logging
+- ✅ Weekly auto-updates
+- ✅ Automatic backups
+- ✅ Easy uninstall
+
+---
+
+### **Option 2: Basic Installation (iptables)**
+Simple installation using iptables:
 
 ```bash
-source ~/.bashrc
-torrent-blocker status
+wget https://raw.githubusercontent.com/nikzad-avasam/block-torrent-on-server/main/btorrent.sh && chmod +x btorrent.sh && sudo bash btorrent.sh
 ```
 
 ---
 
-## 🧠 Management Commands
+### **Option 3: Basic Installation (nftables)**
+Simple installation using nftables (modern firewall):
 
-| Command | Description |
-|----------|--------------|
-| `torrent-blocker status` | Show current blocking stats and system load |
-| `torrent-blocker update` | Manually refresh tracker IPs |
-| `torrent-blocker webhook` | Configure webhook alerts (Discord, Telegram, Slack) |
-| `torrent-blocker uninstall` | Completely remove the firewall and restore system |
-
----
-
-## 📊 Logs & Metrics
-
-- **Log file:** `/var/log/torrent-blocker.log`  
-- **Backup directory:** `/root/torrent-block-backup-*`  
-- **Config file:** `/opt/torrent-blocker/config.conf`  
-- **System load and connection stats** logged automatically
-
----
-
-## ⚠️ Notes
-
-- Encrypted torrent traffic (VPN or obfuscated) may bypass DPI detection.  
-- IPv6 blocking is optional and can be added if required.  
-- If **UFW** is active, the script will prompt to disable or merge rules to avoid conflicts.
-
----
-
-## 📢 Example Webhook Output
-
-**Discord / Telegram / Slack Alert Example:**
-```
-🛡️ Torrent Blocker Alert
-Added 134 new tracker IPs.
-Total blocked: 4,580 trackers, 1,102 sites.
+```bash
+wget https://raw.githubusercontent.com/nikzad-avasam/block-torrent-on-server/main/block-torrent-nftables.sh && chmod +x block-torrent-nftables.sh && sudo bash block-torrent-nftables.sh
 ```
 
 ---
 
-## ❤️ Contribute
+## 🔧 Uninstall
 
-Pull requests, bug reports, and tracker updates are always welcome!  
-If you find new torrent domains or trackers, submit them via a **PR or issue**.
+### **Enhanced Installation:**
+```bash
+sudo /opt/torrent-blocking/uninstall.sh
+```
+
+### **Basic Installation:**
+```bash
+wget https://raw.githubusercontent.com/nikzad-avasam/block-torrent-on-server/main/rollback-torrent-block.sh && chmod +x rollback-torrent-block.sh && sudo bash rollback-torrent-block.sh
+```
 
 ---
 
-## 📄 License
-**MIT License** — free to use, modify, and distribute.
+## 📊 Features Comparison
+
+| Feature | Basic | Enhanced |
+|---------|-------|----------|
+| Domain blocking | ✅ | ✅ |
+| Port blocking | ❌ | ✅ |
+| Monitoring | ❌ | ✅ |
+| Auto-updates | ❌ | ✅ |
+| Logging | ❌ | ✅ |
+| Automatic backups | ❌ | ✅ |
+| Easy uninstall | ❌ | ✅ |
+| Firewall detection | ❌ | ✅ |
 
 ---
 
-> Developed with ❤️ by [ThilinaM99](https://github.com/ThilinaM99)  
-> A lightweight, secure, and automated solution to protect your VPS from torrent abuse.
+## 📋 What Gets Blocked
+
+- **Torrent trackers** (1337x, The Pirate Bay, RARBG, etc.)
+- **P2P networks** (BitTorrent, DHT, etc.)
+- **Torrent ports** (6881-6889, 6969, 51413, etc.)
+- **Streaming sites** (movie/TV streaming)
+- **File sharing sites** (MEGA, Mediafire, etc.)
+
+---
+
+## 🔍 Monitoring & Logs
+
+After enhanced installation, view statistics:
+
+```bash
+cat /var/log/torrent-blocking/blocking-stats.txt
+```
+
+View blocked attempts:
+
+```bash
+tail -f /var/log/torrent-blocking/blocked-domains.log
+```
+
+Check update logs:
+
+```bash
+cat /etc/torrent-blocklists/update.log
+```
+
+---
+
+## 🛡️ Security Notes
+
+⚠️ **Important:**
+- Root/sudo access required
+- Test in non-production environment first
+- Maintain backups (automatically done)
+- Monitor for false positives
+- Keep blocklists updated regularly
+
+---
+
+## 📁 Installation Directories
+
+Enhanced installation creates:
+- `/opt/torrent-blocking/` - Installation directory
+- `/etc/torrent-blocklists/` - Blocklists
+- `/var/log/torrent-blocking/` - Logs
+- `/var/backups/torrent-blocking/` - Backups
+
+---
+
+## 🔄 Manual Updates
+
+Update blocklists manually:
+
+```bash
+sudo /opt/torrent-blocking/update-blocklist.sh
+```
+
+---
+
+## 🐛 Troubleshooting
+
+**Rules not applying?**
+```bash
+# Check iptables
+sudo iptables -L -n | grep DROP
+
+# Check nftables
+sudo nft list ruleset
+```
+
+**Check if blocking is working:**
+```bash
+# Try to resolve a blocked domain
+nslookup 1337x.com
+# Should return 0.0.0.0 or timeout
+```
+
+---
+
+## 📚 Additional Scripts
+
+The repository includes additional improvement scripts:
+
+- `generate-subdomains.sh` - Expand domain list with subdomains
+- `port-blocking.sh` - Standalone port blocking
+- `auto-update-blocklist.sh` - Fetch from multiple sources
+- `monitoring-logging.sh` - Advanced logging setup
+- `dnsmasq-config.conf` - DNS-level blocking config
+
+See `IMPROVEMENTS.md` for details.
+
+---
+
+## 💚 Stay Safe
+
+This project helps protect your server from legal issues related to torrent usage.
+
+**Original Author:** [avasam](https://avasam.ir)  
+**GitHub:** https://github.com/nikzad-avasam/block-torrent-on-server
+
+---
+
+**Last Updated:** 2025-11-23
