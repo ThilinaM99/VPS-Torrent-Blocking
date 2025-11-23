@@ -1,6 +1,8 @@
-# Torrent Blocking Improvements
+# Improvements & Advanced Features
 
-This document outlines the new scripts and improvements added to enhance torrent blocking on your server.
+This document outlines the improvements made to the basic torrent blocking system.
+
+**Latest Update:** nftables implementation optimized for speed and reliability (v2.0)
 
 ## New Scripts
 

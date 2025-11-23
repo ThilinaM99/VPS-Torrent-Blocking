@@ -13,13 +13,13 @@ wget https://raw.githubusercontent.com/ThilinaM99/VPS-Torrent-Blocking/main/inst
 ```
 
 That's it! The script will:
-- ✅ Detect your firewall automatically
-- ✅ Download latest blocklists (4,472 domains)
-- ✅ Setup domain blocking
-- ✅ Setup port blocking
-- ✅ Configure monitoring & logging
-- ✅ Setup weekly auto-updates
-- ✅ Create automatic backups
+- ✅ Detect your firewall automatically (iptables/nftables)
+- ✅ Download latest blocklists (4,472+ domains)
+- ✅ Setup domain-level blocking (hosts file)
+- ✅ Setup port-level blocking (BitTorrent ports)
+- ✅ Configure monitoring & logging with stats
+- ✅ Setup weekly auto-updates from multiple sources
+- ✅ Create automatic backups of configurations
 
 ---
 

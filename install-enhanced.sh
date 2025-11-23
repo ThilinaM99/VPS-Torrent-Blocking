@@ -196,45 +196,40 @@ setup_nftables_blocking() {
     fi
     
     # Create nftables table and chain
-    nft list tables | grep -q 'torrentblock' || \
+    if ! nft list tables 2>/dev/null | grep -q 'torrentblock'; then
         nft add table inet torrentblock
+    fi
     
-    nft list chains inet torrentblock 2>/dev/null | grep -q 'domainblock' || \
+    if ! nft list chains inet torrentblock 2>/dev/null | grep -q 'domainblock'; then
         nft add chain inet torrentblock domainblock { type filter hook output priority 0 \; }
+    fi
     
     # Flush old rules
-    nft flush chain inet torrentblock domainblock
+    nft flush chain inet torrentblock domainblock 2>/dev/null || true
     
-    # Add blocking rules
-    while IFS= read -r domain; do
-        [ -z "$domain" ] && continue
-        
-        # Resolve domain to IP and add rule
-        ip=$(getent ahosts "$domain" 2>/dev/null | awk '{print $1}' | head -n 1)
-        if [ -n "$ip" ]; then
-            nft add rule inet torrentblock domainblock ip daddr "$ip" drop 2>/dev/null || true
-        fi
-    done < "$BLOCKLIST_DIR/domains.txt"
+    # Add blocking rules for common torrent ports instead
+    # This is more efficient than trying to resolve 4000+ domains
+    TORRENT_PORTS=(6881 6882 6883 6884 6885 6886 6887 6888 6889 6969 51413 4662 4672)
+    
+    for port in "${TORRENT_PORTS[@]}"; do
+        nft add rule inet torrentblock domainblock tcp dport "$port" drop 2>/dev/null || true
+        nft add rule inet torrentblock domainblock udp dport "$port" drop 2>/dev/null || true
+    done
+    
+    print_info "Added port-based blocking rules"
     
     # Create cron job for daily updates
     cat > /etc/cron.daily/torrent-block-nftables <<'CRONEOF'
 #!/bin/bash
-BLOCKLIST_DIR="/etc/torrent-blocklists"
-DOMAINS_FILE="$BLOCKLIST_DIR/domains.txt"
-
-if [ ! -f "$DOMAINS_FILE" ]; then
-    exit 1
-fi
-
 nft flush chain inet torrentblock domainblock 2>/dev/null || exit 1
 
-while IFS= read -r domain; do
-    [ -z "$domain" ] && continue
-    ip=$(getent ahosts "$domain" 2>/dev/null | awk '{print $1}' | head -n 1)
-    if [ -n "$ip" ]; then
-        nft add rule inet torrentblock domainblock ip daddr "$ip" drop 2>/dev/null || true
-    fi
-done < "$DOMAINS_FILE"
+# Re-add port-based blocking rules
+TORRENT_PORTS=(6881 6882 6883 6884 6885 6886 6887 6888 6889 6969 51413 4662 4672)
+
+for port in "${TORRENT_PORTS[@]}"; do
+    nft add rule inet torrentblock domainblock tcp dport "$port" drop 2>/dev/null || true
+    nft add rule inet torrentblock domainblock udp dport "$port" drop 2>/dev/null || true
+done
 CRONEOF
     
     chmod +x /etc/cron.daily/torrent-block-nftables

@@ -27,13 +27,13 @@ wget https://raw.githubusercontent.com/ThilinaM99/VPS-Torrent-Blocking/main/inst
 
 **Features:**
 - ✅ Automatic firewall detection (iptables/nftables)
-- ✅ Domain-level blocking
-- ✅ Port-level blocking (BitTorrent ports)
-- ✅ Hosts file blocking
-- ✅ Monitoring & logging
-- ✅ Weekly auto-updates
-- ✅ Automatic backups
-- ✅ Easy uninstall
+- ✅ Domain-level blocking (4,472+ domains)
+- ✅ Port-level blocking (BitTorrent ports 6881-6889, 6969, 51413)
+- ✅ Hosts file blocking (DNS-level)
+- ✅ Monitoring & logging with daily stats
+- ✅ Weekly auto-updates from multiple sources
+- ✅ Automatic backups of all configurations
+- ✅ Easy one-command uninstall
 
 ---
 

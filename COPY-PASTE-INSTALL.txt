@@ -121,10 +121,10 @@ WHAT GETS INSTALLED
 INSTALLATION TIME
 ================================================================================
 
-Fastest Method (one-liner):     2-3 minutes
-Two-Step Method:                2-3 minutes
-Direct Enhanced Installation:   3-5 minutes
-Basic Installation:             1-2 minutes
+Fastest Method (one-liner):     ~1 minute (optimized nftables)
+Two-Step Method:                ~1 minute (optimized nftables)
+Direct Enhanced Installation:   ~1 minute (optimized nftables)
+Basic Installation:             1-2 minutes (iptables)
 
 ================================================================================
 

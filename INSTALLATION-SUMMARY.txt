@@ -99,20 +99,23 @@ WHAT HAS BEEN CREATED
 QUICK START
 ================================================================================
 
-RECOMMENDED INSTALLATION:
-$ wget https://raw.githubusercontent.com/nikzad-avasam/block-torrent-on-server/main/install-enhanced.sh && chmod +x install-enhanced.sh && sudo bash install-enhanced.sh
+FASTEST METHOD (ONE COMMAND):
+$ sudo bash -c "$(wget -qO- https://raw.githubusercontent.com/ThilinaM99/VPS-Torrent-Blocking/main/INSTALL.sh)"
+
+RECOMMENDED INSTALLATION (Enhanced):
+$ wget https://raw.githubusercontent.com/ThilinaM99/VPS-Torrent-Blocking/main/install-enhanced.sh && chmod +x install-enhanced.sh && sudo bash install-enhanced.sh
 
 BASIC INSTALLATION (iptables):
-$ wget https://raw.githubusercontent.com/nikzad-avasam/block-torrent-on-server/main/btorrent.sh && chmod +x btorrent.sh && sudo bash btorrent.sh
+$ wget https://raw.githubusercontent.com/ThilinaM99/VPS-Torrent-Blocking/main/btorrent.sh && chmod +x btorrent.sh && sudo bash btorrent.sh
 
 BASIC INSTALLATION (nftables):
-$ wget https://raw.githubusercontent.com/nikzad-avasam/block-torrent-on-server/main/block-torrent-nftables.sh && chmod +x block-torrent-nftables.sh && sudo bash block-torrent-nftables.sh
+$ wget https://raw.githubusercontent.com/ThilinaM99/VPS-Torrent-Blocking/main/block-torrent-nftables.sh && chmod +x block-torrent-nftables.sh && sudo bash block-torrent-nftables.sh
 
 UNINSTALL (Enhanced):
 $ sudo /opt/torrent-blocking/uninstall.sh
 
 UNINSTALL (Basic):
-$ wget https://raw.githubusercontent.com/nikzad-avasam/block-torrent-on-server/main/rollback-torrent-block.sh && chmod +x rollback-torrent-block.sh && sudo bash rollback-torrent-block.sh
+$ wget https://raw.githubusercontent.com/ThilinaM99/VPS-Torrent-Blocking/main/rollback-torrent-block.sh && chmod +x rollback-torrent-block.sh && sudo bash rollback-torrent-block.sh
 
 FEATURES COMPARISON
 ================================================================================

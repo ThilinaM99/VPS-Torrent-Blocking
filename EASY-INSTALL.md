@@ -11,11 +11,13 @@ sudo bash -c "$(wget -qO- https://raw.githubusercontent.com/ThilinaM99/VPS-Torre
 ```
 
 **That's it!** The script will:
-- ✅ Check dependencies
+- ✅ Check dependencies (wget, etc.)
 - ✅ Download the enhanced installer
-- ✅ Run the full installation
+- ✅ Run the full installation (takes ~1 minute)
 - ✅ Clean up temporary files
-- ✅ Show completion status
+- ✅ Show completion status and next steps
+
+**Installation time:** ~1 minute (much faster than before!)
 
 ---
 

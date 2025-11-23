@@ -52,10 +52,11 @@
 ### Main Installation
 - **install-enhanced.sh** (13.5 KB) ⭐ RECOMMENDED
   - Complete installation with all features
-  - Automatic firewall detection
+  - Automatic firewall detection (iptables/nftables)
   - Sets up monitoring, logging, auto-updates
   - Creates automatic backups
   - Easy uninstall
+  - **Installation time:** ~1 minute (optimized nftables)
   
   ```bash
   wget https://raw.githubusercontent.com/nikzad-avasam/block-torrent-on-server/main/install-enhanced.sh && chmod +x install-enhanced.sh && sudo bash install-enhanced.sh
