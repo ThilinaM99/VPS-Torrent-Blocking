@@ -3,9 +3,20 @@
 # Automatic blocklist update script
 # Fetches fresh blocklists from multiple sources and merges them
 
+if [[ $EUID -ne 0 ]]; then
+    echo "This script must be run as root" >&2
+    exit 1
+fi
+
+if ! command -v wget &> /dev/null; then
+    echo "wget not found. Please install wget and retry." >&2
+    exit 1
+fi
+
 BLOCKLIST_DIR="/etc/torrent-blocklists"
 MERGED_LIST="$BLOCKLIST_DIR/merged-blocklist.txt"
 BACKUP_DIR="$BLOCKLIST_DIR/backups"
+HOSTS_FILE="/etc/hosts.torrent-block"
 TIMESTAMP=$(date '+%Y%m%d_%H%M%S')
 
 mkdir -p "$BLOCKLIST_DIR" "$BACKUP_DIR"
@@ -66,6 +77,14 @@ sort -u "$TEMP_LIST" -o "$MERGED_LIST"
 rm "$TEMP_LIST"
 
 # Count results
+if [ ! -s "$MERGED_LIST" ]; then
+    echo "❌ No domains downloaded. Keeping previous blocklist." >&2
+    if [ -f "$BACKUP_DIR/blocklist_$TIMESTAMP.txt" ]; then
+        cp "$BACKUP_DIR/blocklist_$TIMESTAMP.txt" "$MERGED_LIST"
+    fi
+    exit 1
+fi
+
 DOMAIN_COUNT=$(wc -l < "$MERGED_LIST")
 echo "✅ Blocklist update complete!"
 echo "Total unique domains: $DOMAIN_COUNT"
@@ -78,12 +97,12 @@ if [ -f "$MERGED_LIST" ]; then
     
     # Regenerate hosts file
     if [ -f "$MERGED_LIST" ]; then
-        > /etc/hosts.torrent-block
+        > "$HOSTS_FILE"
         while read -r domain; do
-            echo "0.0.0.0 $domain" >> /etc/hosts.torrent-block
+            echo "0.0.0.0 $domain" >> "$HOSTS_FILE"
         done < "$MERGED_LIST"
         
-        echo "Hosts file updated: /etc/hosts.torrent-block"
+        echo "Hosts file updated: $HOSTS_FILE"
     fi
 fi
 

@@ -25,14 +25,25 @@ generate_stats() {
     echo "=== Torrent Blocking Statistics ===" > "$STATS_FILE"
     echo "Generated: $(date)" >> "$STATS_FILE"
     echo "" >> "$STATS_FILE"
-    
+
+    if [ ! -f "$BLOCKED_LOG" ]; then
+        echo "Total blocked attempts: 0" >> "$STATS_FILE"
+        echo "" >> "$STATS_FILE"
+        echo "Top 10 blocked domains:" >> "$STATS_FILE"
+        echo "(no data)" >> "$STATS_FILE"
+        echo "" >> "$STATS_FILE"
+        echo "Blocked by hour:" >> "$STATS_FILE"
+        echo "(no data)" >> "$STATS_FILE"
+        return
+    fi
+
     echo "Total blocked attempts: $(wc -l < "$BLOCKED_LOG")" >> "$STATS_FILE"
     echo "" >> "$STATS_FILE"
-    
+
     echo "Top 10 blocked domains:" >> "$STATS_FILE"
-    sort "$BLOCKED_LOG" | cut -d':' -f3 | sort | uniq -c | sort -rn | head -10 >> "$STATS_FILE"
+    awk -F 'Blocked: ' 'NF>1 {print $2}' "$BLOCKED_LOG" | sort | uniq -c | sort -rn | head -10 >> "$STATS_FILE"
     echo "" >> "$STATS_FILE"
-    
+
     echo "Blocked by hour:" >> "$STATS_FILE"
     grep -o '\[.*\]' "$BLOCKED_LOG" | cut -d' ' -f2 | cut -d':' -f1 | sort | uniq -c >> "$STATS_FILE"
 }
@@ -75,7 +86,7 @@ if [ -f "$BLOCKED_LOG" ]; then
     echo "" >> "$STATS_FILE"
     
     echo "Top 10 blocked domains:" >> "$STATS_FILE"
-    cut -d':' -f3 "$BLOCKED_LOG" | sort | uniq -c | sort -rn | head -10 >> "$STATS_FILE"
+    awk -F 'Blocked: ' 'NF>1 {print $2}' "$BLOCKED_LOG" | sort | uniq -c | sort -rn | head -10 >> "$STATS_FILE"
     echo "" >> "$STATS_FILE"
     
     echo "Blocked by hour:" >> "$STATS_FILE"

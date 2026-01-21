@@ -177,7 +177,7 @@ The repository includes additional improvement scripts:
 - `monitoring-logging.sh` - Advanced logging setup
 - `dnsmasq-config.conf` - DNS-level blocking config
 
-See `IMPROVEMENTS.md` for details.
+See `START-HERE.md` for a quick walkthrough.
 
 ---
 

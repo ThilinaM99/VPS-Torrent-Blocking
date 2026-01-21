@@ -40,10 +40,7 @@ You should see blocking statistics!
 | File | Purpose | Read Time |
 |------|---------|-----------|
 | **README.md** | Main documentation | 5 min |
-| **QUICK-START.md** | Installation guide | 3 min |
-| **IMPROVEMENTS.md** | Advanced features | 10 min |
-| **DEPLOYMENT-CHECKLIST.md** | Step-by-step setup | 15 min |
-| **INDEX.md** | Complete file guide | 5 min |
+| **START-HERE.md** | Quick install guide | 3 min |
 
 ---
 
@@ -117,8 +114,8 @@ sudo nft list ruleset | grep drop
 
 **Need help?**
 - Check logs: `/var/log/torrent-blocking/`
-- Read: `DEPLOYMENT-CHECKLIST.md`
-- Review: `IMPROVEMENTS.md`
+- Read: `README.md`
+- Review: script outputs for errors
 
 ---
 
@@ -166,8 +163,7 @@ tail -f /var/log/torrent-blocking/blocked-domains.log
 
 ### Step 4: Learn More (Optional)
 - Read `README.md` for complete documentation
-- Read `IMPROVEMENTS.md` for advanced features
-- Follow `DEPLOYMENT-CHECKLIST.md` for production setup
+- Review the scripts in the repo for advanced options
 
 ---
 
@@ -222,10 +218,9 @@ cat /var/log/torrent-blocking/blocking-stats.txt
 
 ## 📞 Need Help?
 
-1. **Quick answers:** Read `QUICK-START.md`
-2. **Step-by-step:** Follow `DEPLOYMENT-CHECKLIST.md`
-3. **Advanced:** See `IMPROVEMENTS.md`
-4. **All files:** Check `INDEX.md`
+1. **Quick answers:** Read `README.md`
+2. **Step-by-step:** Follow the command output and logs
+3. **Advanced:** Review the scripts in this repository
 
 ---
 

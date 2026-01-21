@@ -3,6 +3,16 @@
 # Block common BitTorrent ports
 # This prevents torrent traffic on known ports regardless of domain
 
+if [[ $EUID -ne 0 ]]; then
+    echo "This script must be run as root" >&2
+    exit 1
+fi
+
+if ! command -v iptables &> /dev/null && ! command -v nft &> /dev/null; then
+    echo "Neither iptables nor nftables found. Please install one and retry." >&2
+    exit 1
+fi
+
 echo "Blocking BitTorrent ports..."
 
 # Common BitTorrent ports
